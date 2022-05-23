@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Day4</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<div id="caps"></div>
+</ul>
+
+
+	<script>
+		fetch("https://restcountries.com/v3.1/region/europe")
+			.then(resolve => resolve.json())
+			.then(data => {
+				const listOfCaps=document.createElement('ul');
+				listOfCaps.style.columnCount = '2';
+				listOfCaps.style.columnGap = '50px';
+				data.forEach((country) =>
+				{
+					var listViewItem = document.createElement('li');
+					listViewItem.appendChild(document.createTextNode(country.capital));
+					listOfCaps.appendChild(listViewItem);
+				});
+				document.getElementById('caps').appendChild(listOfCaps);
+			})
+</script>
+</body>
+</html>
